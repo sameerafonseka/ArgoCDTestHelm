@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: aaa
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: helm-chart2
+    repoURL: https://github.com/sameerafonseka/ArgoCDTestHelm.git
+    targetRevision: HEAD
+    helm:
+      releaseName: helm-chart2-release
+

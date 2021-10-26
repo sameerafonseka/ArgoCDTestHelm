@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: agrocdtest
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: my-app2
+    repoURL: https://github.com/sameerafonseka/ArgoCDTestHelm.git
+    targetRevision: HEAD
